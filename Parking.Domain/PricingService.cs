@@ -10,6 +10,8 @@ namespace Parking.Domain
             this.repository = repository;
         }
 
+
+
         public Calculation Calculate(Ticket ticket)
         {
 
@@ -21,14 +23,14 @@ namespace Parking.Domain
             bool hasFullDay = HasFullDay(periods);
 
             return (hasFullDay && ticket.HasFullDays)
-                ? CalculateWithFullDay(ticket, periods)
-                : CalculateTicket(ticket, periods);
+                ? CalculatePriceWithFullDay(ticket, periods)
+                : CalculatePrice(ticket, periods);
         }
 
 
 
 
-        private static Calculation CalculateTicket(Ticket ticket, Period[] periods)
+        private static Calculation CalculatePrice(Ticket ticket, Period[] periods)
         {
 
             double price = 0.0;
@@ -65,7 +67,7 @@ namespace Parking.Domain
             return new Calculation(price);
         }
 
-        private Calculation CalculateWithFullDay(Ticket ticket, Period[] periods)
+        private Calculation CalculatePriceWithFullDay(Ticket ticket, Period[] periods)
         {
             var fullDayPeriod = periods.First(f => f.periodType == PeriodTypeEnum.FullDay);
             return new Calculation(fullDayPeriod.Price * ticket.FullDays);
