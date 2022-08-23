@@ -16,8 +16,8 @@ public class PricingTests
 
     public static readonly object[][] ValidTestData =
     {
-        new object[] {  new DateTime(2022,8,22,9,0,0), new DateTime(2022, 8, 22, 10, 29, 0), 7 },
-        new object[] {  new DateTime(2022,8,22,12,10,0), new DateTime(2022, 8, 22, 12, 25, 0), 5 },
+        new object[] {  new DateTime(2022,8,22,9,0,0), new DateTime(2022, 8, 22, 10, 29, 0), 6 },
+        new object[] {  new DateTime(2022,8,22,12,10,0), new DateTime(2022, 8, 22, 12, 25, 0), 3 },
         new object[] {  new DateTime(2022,8,23,10,25,0), new DateTime(2022, 8, 24, 12, 10, 0), 50 },
         new object[] {  new DateTime(2022,8,27,9,0,0), new DateTime(2022, 8, 27, 12, 4, 0), 15 }
     };
