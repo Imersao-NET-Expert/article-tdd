@@ -11,7 +11,8 @@ public class PricingTests
     public PricingTests()
     {
         var repository = new PricingRepositoryTest();
-        pricingService = new PricingService(repository);
+        var tolerance = 4;
+        pricingService = new PricingService(repository, tolerance);
     }
 
     public static readonly object[][] ValidTestData =
@@ -19,7 +20,8 @@ public class PricingTests
         new object[] {  new DateTime(2022,8,22,9,0,0), new DateTime(2022, 8, 22, 10, 29, 0), 6 },
         new object[] {  new DateTime(2022,8,22,12,10,0), new DateTime(2022, 8, 22, 12, 25, 0), 3 },
         new object[] {  new DateTime(2022,8,23,10,25,0), new DateTime(2022, 8, 24, 12, 10, 0), 50 },
-        new object[] {  new DateTime(2022,8,27,9,0,0), new DateTime(2022, 8, 27, 12, 4, 0), 15 }
+        new object[] {  new DateTime(2022,8,27,9,0,0), new DateTime(2022, 8, 27, 12, 4, 0), 15 },
+        new object[] {  new DateTime(2022,8,23,9,0,0), new DateTime(2022, 8, 23, 9, 4, 0), 0 }
     };
 
     public static readonly object[][] InvalidTestData =

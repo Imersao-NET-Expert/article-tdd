@@ -4,16 +4,21 @@ namespace Parking.Domain
     public class PricingService
     {
         private readonly IPricingRepository repository;
+        private readonly int tolerance;
 
-        public PricingService(IPricingRepository repository)
+        public PricingService(IPricingRepository repository, int tolerance)
         {
             this.repository = repository;
+            this.tolerance = tolerance;
         }
 
 
 
         public Calculation Calculate(Ticket ticket)
         {
+
+            if (ticket.Minutes <= tolerance)
+                return new Calculation(0);
 
             var periods = repository.GetPeriodsFromDayOfWeek(ticket.Start.DayOfWeek);
 
